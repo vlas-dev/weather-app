@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { WiCloud, WiRain, WiThunderstorm, WiDayHaze, WiSnow, WiFog, WiSprinkle, WiStrongWind, WiDaySunny } from "react-icons/wi";
+import {
+  WiCloud,
+  WiRain,
+  WiThunderstorm,
+  WiDayHaze,
+  WiSnow,
+  WiFog,
+  WiSprinkle,
+  WiStrongWind,
+  WiDaySunny,
+} from "react-icons/wi";
 import { FaSearch } from "react-icons/fa";
 
 function App() {
@@ -11,11 +21,15 @@ function App() {
 
   const weatherAPIKey = "e9153ca193b589012defcb2fa87204ed";
 
-  const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${isMetric ? "metric" : "imperial"}&appid=${weatherAPIKey}`;
+  const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${
+    isMetric ? "metric" : "imperial"
+  }&appid=${weatherAPIKey}`;
 
   useEffect(() => {
     axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?q=Buenos%20Aires&units=metric&appid=${weatherAPIKey}`)
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=Buenos%20Aires&units=metric&appid=${weatherAPIKey}`
+      )
       .then((response) => {
         setData(response.data);
       })
@@ -26,7 +40,8 @@ function App() {
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
-      axios.get(weatherURL)
+      axios
+        .get(weatherURL)
         .then((response) => {
           setData(response.data);
           console.log(response.data);
@@ -100,9 +115,6 @@ function App() {
     return null;
   };
 
-
-
-
   const formatCurrentDayOfWeek = (offset) => {
     const daysOfWeek = [
       "Sunday",
@@ -113,7 +125,6 @@ function App() {
       "Friday",
       "Saturday",
     ];
-   
 
     const currentTime = new Date();
 
@@ -121,11 +132,6 @@ function App() {
 
     return dayOfWeek;
   };
-
-
-
-
-
 
   const formatCurrentDate = (offset) => {
     const months = [
@@ -192,11 +198,8 @@ function App() {
   }, [location, weatherURL]);
 
   return (
-    
     <div className="w-[330px] md:w-[700px] h-[500px] mx-auto bg-white bg-opacity-10 rounded-xl shadow-lg mt-16 text-white backdrop-blur-sm">
-      
       <div className="text-center pt-8">
-
         <div className="flex items-center justify-center">
           <input
             value={location}
@@ -224,9 +227,7 @@ function App() {
           <div className="temp flex items-center">
             {data.main ? (
               <>
-                <div>
-                  {getWeatherIcon()}
-                </div>
+                <div>{getWeatherIcon()}</div>
                 <div className="flex items-center">
                   <h1 className="text-7xl font-bold">
                     {isMetric
@@ -261,40 +262,41 @@ function App() {
                     </button>
                   </div>
 
-                        <div>
+                  <div>
+                    <div className=" ml-7">
+                      {currentTime && (
+                        <>
+                          <div className="hidden md:block text-xl font-semibold">
+                            Weather
+                          </div>
 
-                
-
-                  <div className=" ml-7">
-              {currentTime && (
-                <>
-                 <div className="hidden md:block text-xl font-semibold">Weather</div>
-               
-                <div className="hidden md:block">  {data.weather ? <p>{getWeatherDescription()}</p> : null}
-                <p>{formatCurrentDayOfWeek(data.timezone)} {formatCurrentTime(data.timezone)}</p>
-
-                <p>{formatCurrentDate(data.timezone)}</p>
-
-                
+                          <div className="hidden md:block">
+                            {" "}
+                            {data.weather ? (
+                              <p>{getWeatherDescription()}</p>
+                            ) : null}
+                            <p>
+                              {formatCurrentDayOfWeek(data.timezone)}{" "}
+                              {formatCurrentTime(data.timezone)}
+                            </p>
+                            <p>{formatCurrentDate(data.timezone)}</p>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
                 </div>
-
-                </>
-              )}
-            </div>
-
-            </div>
-
-                </div>
-                
               </>
             ) : null}
           </div>
 
           <div className="md:hidden mt-4">
-          <p>{formatCurrentDayOfWeek(data.timezone)} {formatCurrentTime(data.timezone)}</p>
+            <p>
+              {formatCurrentDayOfWeek(data.timezone)}{" "}
+              {formatCurrentTime(data.timezone)}
+            </p>
 
-          <p>{formatCurrentDate(data.timezone)}</p>
-
+            <p>{formatCurrentDate(data.timezone)}</p>
           </div>
         </div>
 
@@ -330,7 +332,6 @@ function App() {
                 </>
               ) : null}
             </div>
-           
           </div>
         )}
       </div>
