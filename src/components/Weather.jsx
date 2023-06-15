@@ -23,7 +23,25 @@ const Weather = () => {
   const [unit, setUnit] = useState("metric"); // 'metric' for Celsius, 'imperial' for Fahrenheit
   const [loading, setLoading] = useState(false); // New loading state
   const [fetchComplete, setFetchComplete] = useState(false); // New fetchComplete state
+  const [userLocation, setUserLocation] = useState(null);
 
+
+  useEffect(() => {
+    const fetchUserLocation = async () => {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        setUserLocation(data);
+        setSearchQuery(`${data.city},${data.country_code}`); // Set the search query to user's location
+      } catch (error) {
+        console.error('Error fetching user location:', error);
+      }
+    };
+  
+    fetchUserLocation();
+  }, []);
+  
+ 
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
@@ -62,7 +80,12 @@ const Weather = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    setSearchQuery(e.target.elements.search.value);
+    const searchValue = e.target.elements.search.value;
+    if (searchValue) {
+      setSearchQuery(searchValue);
+    } else if (userLocation) {
+      setSearchQuery(`${userLocation.city},${userLocation.country_code}`);
+    }
   };
 
   const handleUnitChangeMetric = () => {
@@ -196,6 +219,7 @@ const Weather = () => {
     Tokyo
   </button>
 </div>
+
 
 
         <form
