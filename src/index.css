@@ -19,7 +19,7 @@
 @layer base {
   body {
     font-family: 'Poppins', sans-serif;
-    background-image: url('./assets/cloudy.jpg');
+    background-image: url('./assets/weatherImg.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
