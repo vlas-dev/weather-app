@@ -31,11 +31,11 @@
 }
 
 .bg-clear {
-  background-image: url("./assets/aaa.jpeg");
+  background-image: url("./assets/cloudy.jpg");
 }
 
 .bg-clear-night {
-  background-image: url("./assets/snowy.jpg");
+  background-image: url("./assets/cloudy.jpg");
 }
 
 .bg-partly-cloudy {
