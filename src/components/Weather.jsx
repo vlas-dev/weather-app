@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 
 import {
-  BsSun,
-  BsMoon,
-  BsClouds,
-  BsCloudRain,
-  BsCloudLightningRain,
-  BsCloudHaze,
-  BsSnow,
-  BsCloudFog2,
-  BsWind,
-  BsCloudDrizzle,
- 
-} from "react-icons/bs";
-import { GoSearch } from "react-icons/go";
+  WiDaySunny,
+  WiDayCloudy,
+  WiNightAltCloudy,
+  WiCloudy,
+  WiRain,
+  WiThunderstorm,
+  WiDaySnow,
+  WiNightAltSnow,
+  WiDayFog,
+  WiNightFog,
+} from "react-icons/wi";
+import { LuMoonStar } from "react-icons/lu";
+import { BsXLg } from "react-icons/bs";
+import { GoSearch, GoLocation } from "react-icons/go";
 
 import { BeatLoader } from "react-spinners";
 
@@ -24,24 +25,40 @@ const Weather = () => {
   const [loading, setLoading] = useState(false); // New loading state
   const [fetchComplete, setFetchComplete] = useState(false); // New fetchComplete state
   const [userLocation, setUserLocation] = useState(null);
+  const [searchKey, setSearchKey] = useState(0);
+  const [searchText, setSearchText] = useState("");
+  const [weatherCondition, setWeatherCondition] = useState("");
 
+  const fetchUserLocation = async () => {
+    try {
+      setLoading(true);
+      setFetchComplete(false); // Reset fetchComplete state before fetching data
 
-  useEffect(() => {
-    const fetchUserLocation = async () => {
-      try {
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-        setUserLocation(data);
-        setSearchQuery(`${data.city},${data.country_code}`); // Set the search query to user's location
-      } catch (error) {
-        console.error('Error fetching user location:', error);
+      const response = await fetch("https://ipapi.co/json/");
+      const data = await response.json();
+      setUserLocation(data);
+      setSearchQuery(`${data.city}, ${data.country_code}`); // Set the search query to user's location
+      const searchInput = document.querySelector('input[name="search"]');
+      if (searchInput) {
+        searchInput.value = `${data.city}, ${data.country_code}`; // Set the value of the search input field
       }
-    };
-  
+
+      // Fetch weather data with the new search query
+      if (data.city && data.country_code) {
+        setSearchText(`${data.city}, ${data.country_code}`);
+        setSearchKey((prevKey) => prevKey + 1); // Update the searchKey to trigger a new search
+      }
+    } catch (error) {
+      console.error("Error fetching user location:", error);
+    } finally {
+      setLoading(false);
+      setFetchComplete(true); // Set fetchComplete to true after fetching data
+    }
+  };
+  useEffect(() => {
     fetchUserLocation();
   }, []);
-  
- 
+
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
@@ -62,8 +79,13 @@ const Weather = () => {
 
         if (metricResponse.ok && imperialResponse.ok) {
           setWeatherData({ metric: metricData, imperial: imperialData });
+
+          // Set the weather condition based on the retrieved data
+          setWeatherCondition(metricData.weather[0].icon);
         } else {
           setWeatherData(null);
+
+          setWeatherCondition("");
         }
       } catch (error) {
         console.error("Error:", error);
@@ -76,15 +98,93 @@ const Weather = () => {
     if (searchQuery) {
       fetchWeatherData();
     }
-  }, [searchQuery]);
+  }, [searchQuery, searchKey]);
+
+  useEffect(() => {
+    // Update the body class based on the weather condition
+    switch (weatherCondition) {
+      case "01d":
+        document.body.classList.add("bg-clear");
+        break;
+      case "01n":
+        document.body.classList.add("bg-clear-night");
+        break;
+      case "02d":
+        document.body.classList.add("bg-partly-cloudy");
+        break;
+      case "02n":
+        document.body.classList.add("bg-partly-cloudy-night");
+        break;
+      case "03d":
+      case "04d":
+        document.body.classList.add("bg-cloudy");
+        break;
+      case "03n":
+      case "04n":
+        document.body.classList.add("bg-cloudy-night");
+        break;
+      case "09d":
+      case "10d":
+        document.body.classList.add("bg-rainy");
+        break;
+      case "09n":
+      case "10n":
+        document.body.classList.add("bg-rainy-night");
+        break;
+      case "11d":
+        document.body.classList.add("bg-thunderstorm");
+        break;
+      case "11n":
+        document.body.classList.add("bg-thunderstorm-night");
+        break;
+      case "13d":
+        document.body.classList.add("bg-snowy");
+        break;
+      case "13n":
+        document.body.classList.add("bg-snowy-night");
+        break;
+      case "50d":
+        document.body.classList.add("bg-foggy");
+        break;
+      case "50n":
+        document.body.classList.add("bg-foggy-night");
+        break;
+      default:
+        break;
+    }
+
+    return () => {
+      // Cleanup the body class when component unmounts
+      document.body.classList.remove(
+        "bg-clear",
+        "bg-clear-night",
+        "bg-partly-cloudy",
+        "bg-partly-cloudy-night",
+        "bg-cloudy",
+        "bg-cloudy-night",
+        "bg-cloudy-04",
+        "bg-cloudy-04-night",
+        "bg-rainy",
+        "bg-rainy-night",
+        "bg-thunderstorm",
+        "bg-thunderstorm-night",
+        "bg-snowy",
+        "bg-snowy-night",
+        "bg-foggy",
+        "bg-foggy-night"
+      );
+    };
+  }, [weatherCondition]);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const searchValue = e.target.elements.search.value;
+    const searchValue = searchText;
+    setSearchKey((prevKey) => prevKey + 1); // Update the searchKey
+
     if (searchValue) {
       setSearchQuery(searchValue);
     } else if (userLocation) {
-      setSearchQuery(`${userLocation.city},${userLocation.country_code}`);
+      fetchUserLocation();
     }
   };
 
@@ -100,41 +200,40 @@ const Weather = () => {
     }
   };
 
-  const getWeatherIcon = (weatherCode, timezoneOffset) => {
-    const currentDate = new Date();
-    const utcOffset = currentDate.getTimezoneOffset() * 60; // Offset in seconds for UTC time
-    const localOffset = timezoneOffset; // Offset in seconds for the searched city
-    const localTimeInSeconds =
-      currentDate.getTime() / 1000 + utcOffset + localOffset;
-    const localDate = new Date(localTimeInSeconds * 1000);
-
-    const currentHour = localDate.getHours();
-
-    const isDaytime = currentHour >= 6 && currentHour < 19; // Assume day from 6 AM to 6 PM
-
-    switch (weatherCode) {
-      case "Clouds":
-        return <BsClouds />;
-      case "Rain":
-        return <BsCloudRain />;
-      case "Thunderstorm":
-        return <BsCloudLightningRain />;
-      case "Haze":
-        return <BsCloudHaze />;
-      case "Snow":
-        return <BsSnow />;
-      case "Fog":
-        return <BsCloudFog2 />;
-      case "Drizzle":
-        return <BsCloudDrizzle />;
-      case "Wind":
-        return <BsWind />;
+  const getWeatherIcon = (weatherIconCode) => {
+    switch (weatherIconCode) {
+      case "01d":
+        return <WiDaySunny />;
+      case "01n":
+        return <LuMoonStar style={{ width: "45px", height: "70px" }} />;
+      case "02d":
+        return <WiDayCloudy />;
+      case "02n":
+        return <WiNightAltCloudy />;
+      case "03n":
+      case "04n":
+        return <WiCloudy />;
+      case "03d":
+      case "04d":
+        return <WiCloudy />;
+      case "09d":
+      case "10d":
+      case "09n":
+      case "10n":
+        return <WiRain />;
+      case "11d":
+      case "11n":
+        return <WiThunderstorm />;
+      case "13d":
+        return <WiDaySnow />;
+      case "13n":
+        return <WiNightAltSnow />;
+      case "50d":
+        return <WiDayFog />;
+      case "50n":
+        return <WiNightFog />;
       default:
-        return isDaytime ? (
-          <BsSun />
-        ) : (
-          <BsMoon style={{ width: "50px", height: "70px" }} />
-        );
+        return null;
     }
   };
 
@@ -151,6 +250,7 @@ const Weather = () => {
       .slice(0, 3);
     const time = localDate.toLocaleTimeString([], {
       hour: "numeric",
+      minute: "numeric",
       hour12: true,
     });
     const month = localDate
@@ -170,73 +270,95 @@ const Weather = () => {
 
   const handleShowCityWeather = (city) => {
     setSearchQuery(city);
+    setSearchText(city); // Update searchText with the selected city
+    const searchInput = document.querySelector('input[name="search"]');
+    if (searchInput) {
+      searchInput.value = city;
+    }
+    setSearchKey((prevKey) => prevKey + 1); // Update the searchKey
   };
+  
 
   return (
-    <div className="w-[330px] md:w-[700px] h-[500px] mx-auto bg-white bg-opacity-10 rounded-xl shadow-lg mt-16 text-white backdrop-blur-sm">
-      <div className="flex flex-col items-center text-center pt-5 ">
-      <div className="text-sm md:text-md md:mb-8 md:mt-2 flex gap-4 md:gap-8">
-  <button
-    onClick={() => handleShowCityWeather("Buenos Aires")}
-    className="hidden md:inline-block focus:outline-none"
-  >
-    Buenos Aires
-  </button>
-
-
-  <button
-    onClick={() => handleShowCityWeather("Miami")}
-    className="hidden md:inline-block focus:outline-none"
-  >
-    Miami
-  </button>
-
-  <button
-    onClick={() => handleShowCityWeather("New York")}
-    className=" focus:outline-none"
-  >
-    New York
-  </button>
-
-  <button
-    onClick={() => handleShowCityWeather("London")}
-    className=" focus:outline-none"
-  >
-    London
-  </button>
-
-  <button
-    onClick={() => handleShowCityWeather("Paris")}
-    className="focus:outline-none"
-  >
-    Paris
-  </button>
-
-  <button
-    onClick={() => handleShowCityWeather("Tokyo")}
-    className=" focus:outline-none"
-  >
-    Tokyo
-  </button>
-</div>
-
-
-
-        <form
-          onSubmit={handleSearch}
-          className="flex items-center mb-4 mt-4 md:mt-0"
-        >
-          <input
-            type="text"
-            name="search"
-            placeholder="Enter a city"
-            className="px-6 py-2 text-lg rounded-full border border-white bg-transparent focus:outline-none  w-72 md:w-96 backdrop-blur-sm"
-            required
-          />
-          <button type="submit" className="absolute right-10 md:right-44">
-            <GoSearch className="w-5 h-5 " />
+<div className="flex items-center justify-center w-screen h-screen">
+  <div className="w-[330px] md:w-[700px] h-[500px] bg-white bg-opacity-10 rounded-xl shadow-lg text-white backdrop-blur-sm">      <div className="flex flex-col items-center text-center pt-5 ">
+        <div className="text-sm md:text-md md:mb-8 md:mt-2 flex gap-4 md:gap-8">
+          <button
+            onClick={() => handleShowCityWeather("Buenos Aires, AR")}
+            className="hidden md:inline-block focus:outline-none"
+          >
+            Buenos Aires
           </button>
-        </form>
+
+          <button
+            onClick={() => handleShowCityWeather("Miami, US")}
+            className="hidden md:inline-block focus:outline-none"
+          >
+            Miami
+          </button>
+
+          <button
+            onClick={() => handleShowCityWeather("New York, US")}
+            className=" focus:outline-none"
+          >
+            New York
+          </button>
+
+          <button
+            onClick={() => handleShowCityWeather("London, GB")}
+            className=" focus:outline-none"
+          >
+            London
+          </button>
+
+          <button
+            onClick={() => handleShowCityWeather("Paris, FR")}
+            className="focus:outline-none"
+          >
+            Paris
+          </button>
+
+          <button
+            onClick={() => handleShowCityWeather("Tokyo, JP")}
+            className=" focus:outline-none"
+          >
+            Tokyo
+          </button>
+        </div>
+
+        <div className="flex">
+          <div className="flex items-center mb-4 mt-4 md:mt-0 h-full">
+            <form onSubmit={handleSearch} className="flex items-center">
+              <input
+                type="text"
+                name="search"
+                placeholder="Enter a city"
+                className="px-6 py-2 text-lg rounded-l-full placeholder:text-[#606060] border border-white border-r-0 bg-transparent focus:outline-none w-52 md:w-80 backdrop-blur-sm"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                required
+              />
+              {searchText && (
+                <button
+                  type="button"
+                  className="absolute right-32 md:right-64"
+                  onClick={() => setSearchText("")}
+                >
+                  <BsXLg className="w-4 h-4" />
+                </button>
+              )}
+              <button
+                type="submit"
+                className="px-6 py-3 h-full bg-transparent border border-white rounded-r-full backdrop-blur-sm"
+              >
+                <GoSearch className="w-5 h-5" />
+              </button>
+            </form>
+            <button onClick={fetchUserLocation} className="ml-2 md:ml-4">
+              <GoLocation className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
 
         {loading && !fetchComplete && (
           // Show spinner only when loading is true and fetchComplete is false
@@ -258,15 +380,10 @@ const Weather = () => {
               {weatherData.metric.name}, {weatherData.metric.sys.country}
             </h2>
 
-         
-
             <div className="flex items-center justify-center mt-8 md:mb-16">
               <div className="flex">
                 <div className="text-7xl mx-4">
-                  {getWeatherIcon(
-                    weatherData.metric.weather[0].main,
-                    weatherData.metric.timezone
-                  )}
+                  {getWeatherIcon(weatherData.metric.weather[0].icon)}
                 </div>
 
                 <p className="text-7xl font-bold">
@@ -280,7 +397,7 @@ const Weather = () => {
                 <div className="pt-1 mx-2 text-2xl">
                   <button
                     onClick={handleUnitChangeMetric}
-                    className={` ${unit === "metric" ? "" : "text-gray-700"}`}
+                    className={` ${unit === "metric" ? "" : "text-[#606060]"}`}
                   >
                     °C
                   </button>
@@ -290,7 +407,9 @@ const Weather = () => {
 
                   <button
                     onClick={handleUnitChangeImperial}
-                    className={` ${unit === "imperial" ? "" : "text-gray-700"}`}
+                    className={` ${
+                      unit === "imperial" ? "" : "text-[#606060]"
+                    }`}
                   >
                     °F
                   </button>
@@ -304,15 +423,9 @@ const Weather = () => {
 
                 {/* Display local time and date */}
 
-                <p>
-                  {getLocalTime(weatherData.metric.timezone)}
-                    
-                </p>
-
-              
+                <p>{getLocalTime(weatherData.metric.timezone)}</p>
               </div>
             </div>
-
 
             <div className="block md:hidden mb-8 mt-5">
               <p className="capitalize">
@@ -322,18 +435,21 @@ const Weather = () => {
               {/* Display local time and date */}
 
               {getLocalTime(weatherData.metric.timezone)}
-
             </div>
 
-          <div className="flex justify-between">
+            <div className="flex justify-between">
               <div className="mx-3 md:mx-5">
-  <p className="md:text-lg">Feels like:</p>
-  <p className="md:text-xl font-semibold">
-    {unit === "metric"
-      ? `${Math.round(weatherData.metric.main.feels_like)}${" "}°C`
-      : `${Math.round(weatherData.imperial.main.feels_like)}${" "}°F`}
-  </p>
-</div>
+                <p className="md:text-lg">Feels like:</p>
+                <p className="md:text-xl font-semibold">
+                  {unit === "metric"
+                    ? `${Math.round(
+                        weatherData.metric.main.feels_like
+                      )} °C`
+                    : `${Math.round(
+                        weatherData.imperial.main.feels_like
+                      )} °F`}
+                </p>
+              </div>
               <div className="mx-3  md:mx-5">
                 <p className="md:text-lg">Humidity:</p>
                 <p className="md:text-xl font-semibold">
@@ -343,21 +459,21 @@ const Weather = () => {
               <div className="mx-3  md:mx-5">
                 <p className="md:md:text-lg">Wind:</p>
                 <p className="md:text-xl font-semibold">
-                  {Math.round(
-                    unit === "metric"
-                      ? weatherData.metric.wind.speed *3.6
-                      : weatherData.imperial.wind.speed
-                  )}
-                  {unit === "metric" ? " km/h" : " mph"}
+                {unit === "metric"
+                    ? `${Math.round(weatherData.metric.wind.speed * 3.6)} km/h`
+
+                    : `${Math.round(
+                        weatherData.imperial.wind.speed
+                      )} mph`}
+
                 </p>
               </div>
             </div>
-
-
           </div>
         )}
       </div>
-    </div>
+      </div>
+      </div>
   );
 };
 

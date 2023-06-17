@@ -19,13 +19,69 @@
 @layer base {
   body {
     font-family: 'Poppins', sans-serif;
-    background-image: url('./assets/weatherImg.jpeg');
     background-size: cover;
-
+    /* background-image: url(./assets/aaa.jpeg); */
+    
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
     overflow: hidden;
     height: 100vh;
   }
+}
+
+.bg-clear {
+  background-image: url("./assets/aaa.jpeg");
+}
+
+.bg-clear-night {
+  background-image: url("./assets/snowy.jpg");
+}
+
+.bg-partly-cloudy {
+  background-image: url("./assets/cloudy.jpg");
+}
+
+.bg-partly-cloudy-night {
+  background-image: url("./assets/cloudy.jpg");
+}
+
+.bg-cloudy {
+  background-image: url("./assets/cloudy.jpg");
+}
+
+.bg-cloudy-night {
+  background-image: url("./assets/cloudy.jpg");
+}
+
+.bg-rainy {
+  background-image: url("./assets/cloudy.jpg");
+}
+
+.bg-rainy-night {
+  background-image: url("./assets/cloudy.jpg");
+}
+
+.bg-thunderstorm {
+  background-image: url("./assets/clear.jpg");
+}
+
+.bg-thunderstorm-night {
+  background-image: url("./assets/cloudy.jpg");
+}
+
+.bg-snowy {
+  background-image: url("./assets/clear.jpg");
+}
+
+.bg-snowy-night {
+  background-image: url("./assets/cloudy.jpg");
+}
+
+.bg-foggy {
+  background-image: url("./assets/clear.jpg");
+}
+
+.bg-foggy-night {
+  background-image: url("./assets/cloudy.jpg");
 }
