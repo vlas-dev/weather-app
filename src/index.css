@@ -20,7 +20,7 @@
   body {
     font-family: 'Poppins', sans-serif;
     background-size: cover;
-    /* background-image: url(./assets/aaa.jpeg); */
+    background-image: url(./assets/weatherImg.jpg);
     
     background-repeat: no-repeat;
     margin: 0;
@@ -29,6 +29,9 @@
     height: 100vh;
   }
 }
+
+
+
 
 .bg-clear {
   background-image: url("./assets/cloudy.jpg");
@@ -63,7 +66,7 @@
 }
 
 .bg-thunderstorm {
-  background-image: url("./assets/clear.jpg");
+  background-image: url("./assets/cloudy.jpg");
 }
 
 .bg-thunderstorm-night {
@@ -71,7 +74,7 @@
 }
 
 .bg-snowy {
-  background-image: url("./assets/clear.jpg");
+  background-image: url("./assets/cloudy.jpg");
 }
 
 .bg-snowy-night {
@@ -79,7 +82,7 @@
 }
 
 .bg-foggy {
-  background-image: url("./assets/clear.jpg");
+  background-image: url("./assets/cloudy.jpg");
 }
 
 .bg-foggy-night {

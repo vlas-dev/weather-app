@@ -55,9 +55,7 @@ const Weather = () => {
       setFetchComplete(true); // Set fetchComplete to true after fetching data
     }
   };
-  useEffect(() => {
-    fetchUserLocation();
-  }, []);
+
 
   useEffect(() => {
     const fetchWeatherData = async () => {
