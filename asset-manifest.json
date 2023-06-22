@@ -1,14 +1,32 @@
 {
   "files": {
-    "main.css": "/weather-app/static/css/main.27fbd665.css",
-    "main.js": "/weather-app/static/js/main.2495fd3f.js",
-    "static/media/default.jpg": "/weather-app/static/media/default.d6e0287f56391e648728.jpg",
+    "main.css": "/weather-app/static/css/main.a753e9cb.css",
+    "main.js": "/weather-app/static/js/main.89617361.js",
+    "static/media/rainy-night.jpg": "/weather-app/static/media/rainy-night.15858a91f4c4fafd2aee.jpg",
+    "static/media/drizzle-night.jpg": "/weather-app/static/media/drizzle-night.ffd208843f1a9c70c94f.jpg",
+    "static/media/default.jpg": "/weather-app/static/media/default.89eeb88e95567b8db101.jpg",
+    "static/media/cloudy-partial2-night.jpg": "/weather-app/static/media/cloudy-partial2-night.3165d30af14407cd5ea0.jpg",
+    "static/media/rainy.jpg": "/weather-app/static/media/rainy.5e076c574e80881e6631.jpg",
+    "static/media/cloudy-partial2.jpg": "/weather-app/static/media/cloudy-partial2.dac5aa1d4e6be42e7e40.jpg",
+    "static/media/cloudy-partial-night.jpg": "/weather-app/static/media/cloudy-partial-night.0ab16a71a0da3a9c6d2d.jpg",
+    "static/media/thunderstorm.jpg": "/weather-app/static/media/thunderstorm.a4eb56b38f70ec1842f4.jpg",
+    "static/media/snowy.jpg": "/weather-app/static/media/snowy.277f48d9f5f1a36ac4ac.jpg",
+    "static/media/drizzle.jpg": "/weather-app/static/media/drizzle.1bbe1b69340d67bb4e5a.jpg",
+    "static/media/foggy-night.jpg": "/weather-app/static/media/foggy-night.980e9468f02fd186469e.jpg",
+    "static/media/cloudy-partial.jpg": "/weather-app/static/media/cloudy-partial.52a243560c97be848e89.jpg",
+    "static/media/snowy-night.jpg": "/weather-app/static/media/snowy-night.434a30f06766553ed352.jpg",
+    "static/media/clear.jpg": "/weather-app/static/media/clear.bd51f2ddb03f0b1c7429.jpg",
+    "static/media/cloudy-night.jpg": "/weather-app/static/media/cloudy-night.50b3b0b1736f35d7b3f1.jpg",
+    "static/media/clear-night.jpg": "/weather-app/static/media/clear-night.eab42d55b635b67b10f5.jpg",
+    "static/media/cloudy.jpg": "/weather-app/static/media/cloudy.507d1fce675efea2f429.jpg",
+    "static/media/foggy.jpg": "/weather-app/static/media/foggy.86a50a943f391bea4b3e.jpg",
+    "static/media/thunderstorm-night.jpg": "/weather-app/static/media/thunderstorm-night.896a2bacedff6d165cd7.jpg",
     "index.html": "/weather-app/index.html",
-    "main.27fbd665.css.map": "/weather-app/static/css/main.27fbd665.css.map",
-    "main.2495fd3f.js.map": "/weather-app/static/js/main.2495fd3f.js.map"
+    "main.a753e9cb.css.map": "/weather-app/static/css/main.a753e9cb.css.map",
+    "main.89617361.js.map": "/weather-app/static/js/main.89617361.js.map"
   },
   "entrypoints": [
-    "static/css/main.27fbd665.css",
-    "static/js/main.2495fd3f.js"
+    "static/css/main.a753e9cb.css",
+    "static/js/main.89617361.js"
   ]
 }
