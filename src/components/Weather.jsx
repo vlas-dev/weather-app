@@ -33,6 +33,10 @@ const Weather = () => {
   const [searchText, setSearchText] = useState("");
   const [weatherCondition, setWeatherCondition] = useState("");
 
+
+
+
+  
   const fetchUserLocation = async () => {
     try {
       setLoading(true);
@@ -101,6 +105,8 @@ const Weather = () => {
     }
   }, [searchQuery, searchKey]);
 
+
+  
   useEffect(() => {
     // Update the body class based on the weather condition
     switch (weatherCondition) {
@@ -307,7 +313,7 @@ const Weather = () => {
   return (
     <div className="flex items-center justify-center w-screen h-screen">
       <div
-        className={`w-[330px] md:w-[700px] h-[500px] bg-white  bg-opacity-10 rounded-xl shadow-lg  backdrop-filter backdrop-blur-sm border border-white border-opacity-20 ${
+        className={`w-[330px] md:w-[700px] h-[500px]  bg-white  bg-opacity-10 rounded-xl shadow-lg  backdrop-filter backdrop-blur-sm border border-white border-opacity-20 ${
           weatherCondition.includes("d") ? "text-[#3c3c3c] " : "text-white"
         }`}
       >
