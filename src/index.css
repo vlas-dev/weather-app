@@ -33,6 +33,9 @@
   }
 }
 
+.transition-effect {
+  transition: background-image 1.5s ease;
+}
 
 .bg-clear {
   background-image: url("./assets/clear_after.jpg");
@@ -105,3 +108,4 @@
 .bg-foggy-night {
   background-image: url("./assets/foggy-night_after.jpg");
 }
+

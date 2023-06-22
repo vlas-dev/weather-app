@@ -107,58 +107,58 @@ const Weather = () => {
     // Update the body class based on the weather condition
     switch (weatherCondition) {
       case "01d":
-        document.body.classList.add("bg-clear");
+        document.body.classList.add("bg-clear", "transition-effect");
         break;
       case "01n":
-        document.body.classList.add("bg-clear-night");
+        document.body.classList.add("bg-clear-night", "transition-effect");
         break;
       case "02d":
-        document.body.classList.add("bg-cloudy-partial");
+        document.body.classList.add("bg-cloudy-partial", "transition-effect");
         break;
       case "02n":
-        document.body.classList.add("bg-cloudy-partial-night");
+        document.body.classList.add("bg-cloudy-partial-night", "transition-effect");
         break;
       case "03d":
-        document.body.classList.add("bg-cloudy-partial2");
+        document.body.classList.add("bg-cloudy-partial2", "transition-effect");
         break;
       case "03n":
-        document.body.classList.add("bg-cloudy-partial2-night");
+        document.body.classList.add("bg-cloudy-partial2-night", "transition-effect");
         break;
       case "04d":
-        document.body.classList.add("bg-cloudy");
+        document.body.classList.add("bg-cloudy", "transition-effect");
         break;
       case "04n":
-        document.body.classList.add("bg-cloudy-night");
+        document.body.classList.add("bg-cloudy-night", "transition-effect");
         break;
       case "09d":
-        document.body.classList.add("bg-drizzle");
+        document.body.classList.add("bg-drizzle", "transition-effect");
         break;
       case "09n":
-        document.body.classList.add("bg-drizzle-night");
+        document.body.classList.add("bg-drizzle-night", "transition-effect");
         break;
       case "10d":
-        document.body.classList.add("bg-rainy");
+        document.body.classList.add("bg-rainy", "transition-effect");
         break;
       case "10n":
-        document.body.classList.add("bg-rainy-night");
+        document.body.classList.add("bg-rainy-night", "transition-effect");
         break;
       case "11d":
-        document.body.classList.add("bg-thunderstorm");
+        document.body.classList.add("bg-thunderstorm", "transition-effect");
         break;
       case "11n":
-        document.body.classList.add("bg-thunderstorm-night");
+        document.body.classList.add("bg-thunderstorm-night", "transition-effect");
         break;
       case "13d":
-        document.body.classList.add("bg-snowy");
+        document.body.classList.add("bg-snowy", "transition-effect");
         break;
       case "13n":
-        document.body.classList.add("bg-snowy-night");
+        document.body.classList.add("bg-snowy-night", "transition-effect");
         break;
       case "50d":
-        document.body.classList.add("bg-foggy");
+        document.body.classList.add("bg-foggy", "transition-effect");
         break;
       case "50n":
-        document.body.classList.add("bg-foggy-night");
+        document.body.classList.add("bg-foggy-night", "transition-effect");
         break;
       default:
         break;
