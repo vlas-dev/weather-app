@@ -1,32 +1,32 @@
 {
   "files": {
-    "main.css": "/weather-app/static/css/main.84c1ef93.css",
-    "main.js": "/weather-app/static/js/main.89617361.js",
+    "main.css": "/weather-app/static/css/main.0acbd39b.css",
+    "main.js": "/weather-app/static/js/main.fd9a6145.js",
     "static/media/default_after.jpg": "/weather-app/static/media/default_after.9f817dbb3f326c37a46b.jpg",
     "static/media/snowy_after.jpg": "/weather-app/static/media/snowy_after.abc18c65aa4caf83b1ac.jpg",
     "static/media/thunderstorm-night_after.jpg": "/weather-app/static/media/thunderstorm-night_after.11a5e7f2b5f4d606b844.jpg",
     "static/media/thunderstorm_after.jpg": "/weather-app/static/media/thunderstorm_after.7bc022c701b127aa8c94.jpg",
     "static/media/rainy-night_after.jpg": "/weather-app/static/media/rainy-night_after.f80a562ed72a5e32dd87.jpg",
     "static/media/rainy_after.jpg": "/weather-app/static/media/rainy_after.2c687972566004645e1e.jpg",
-    "static/media/cloudy-partial2_after.jpg": "/weather-app/static/media/cloudy-partial2_after.98b73d80f884ece6364a.jpg",
     "static/media/drizzle-night_after.jpg": "/weather-app/static/media/drizzle-night_after.d60135c36b18e1fd3441.jpg",
     "static/media/drizzle_after.jpg": "/weather-app/static/media/drizzle_after.9c913af45e15085715ef.jpg",
     "static/media/cloudy-night_after.jpg": "/weather-app/static/media/cloudy-night_after.13d63ea41b3287c42eff.jpg",
     "static/media/snowy-night_after.jpg": "/weather-app/static/media/snowy-night_after.7b1bb192fe630f7d76fb.jpg",
     "static/media/cloudy_after.jpg": "/weather-app/static/media/cloudy_after.3057d9b449ffa504d186.jpg",
     "static/media/cloudy-partial2-night_after.jpg": "/weather-app/static/media/cloudy-partial2-night_after.fde42687afbf5733c5f9.jpg",
+    "static/media/cloudy-partial2_after.jpg": "/weather-app/static/media/cloudy-partial2_after.70485a0c27bb7d3496fc.jpg",
     "static/media/foggy_after.jpg": "/weather-app/static/media/foggy_after.e30f9baebb07ac16d477.jpg",
-    "static/media/clear_after.jpg": "/weather-app/static/media/clear_after.52bd4edd23e2234d4131.jpg",
-    "static/media/cloudy-partial_after.jpg": "/weather-app/static/media/cloudy-partial_after.f66966e08044908ed4be.jpg",
-    "static/media/foggy-night_after.jpg": "/weather-app/static/media/foggy-night_after.973e8a4f35ae8fdc58d2.jpg",
+    "static/media/cloudy-partial_after.jpg": "/weather-app/static/media/cloudy-partial_after.518a27108477d4c028f7.jpg",
+    "static/media/clear_after.jpg": "/weather-app/static/media/clear_after.4a17f0ab84788a5c3ccd.jpg",
+    "static/media/foggy-night_after.jpg": "/weather-app/static/media/foggy-night_after.5cc2224db61319f6a6d3.jpg",
     "static/media/cloudy-partial-night_after.jpg": "/weather-app/static/media/cloudy-partial-night_after.36d2ad3e9b9f9dff9b53.jpg",
     "static/media/clear-night_after.jpg": "/weather-app/static/media/clear-night_after.d2b73b1d87cf1d024d4f.jpg",
     "index.html": "/weather-app/index.html",
-    "main.84c1ef93.css.map": "/weather-app/static/css/main.84c1ef93.css.map",
-    "main.89617361.js.map": "/weather-app/static/js/main.89617361.js.map"
+    "main.0acbd39b.css.map": "/weather-app/static/css/main.0acbd39b.css.map",
+    "main.fd9a6145.js.map": "/weather-app/static/js/main.fd9a6145.js.map"
   },
   "entrypoints": [
-    "static/css/main.84c1ef93.css",
-    "static/js/main.89617361.js"
+    "static/css/main.0acbd39b.css",
+    "static/js/main.fd9a6145.js"
   ]
 }
