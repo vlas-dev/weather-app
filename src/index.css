@@ -20,7 +20,7 @@
   body {
     font-family: 'Poppins', sans-serif;
     background-size: cover;
-    background-image: url(./assets/default.jpg);
+    background-image: url(./assets/default_after.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     margin: 0;
@@ -35,73 +35,77 @@
 
 
 .bg-clear {
-  background-image: url("./assets/clear.jpg");
+  background-image: url("./assets/clear_after.jpg");
 }
 
 .bg-clear-night {
-  background-image: url("./assets/clear-night.jpg");
+  background-image: url("./assets/clear-night_after.jpg");
 }
 
 .bg-cloudy-partial {
-  background-image: url("./assets/cloudy-partial.jpg");
+  background-image: url("./assets/cloudy-partial_after.jpg");
 }
 
 .bg-cloudy-partial-night {
-  background-image: url("./assets/cloudy-partial-night.jpg");
+  background-image: url("./assets/cloudy-partial-night_after.jpg");
 }
 
 .bg-cloudy-partial2 {
-  background-image: url("./assets/cloudy-partial2.jpg");
+  background-image: url("./assets/cloudy-partial2_after.jpg");
 }
 
 .bg-cloudy-partial2-night {
-  background-image: url("./assets/cloudy-partial2-night.jpg");
+  background-image: url("./assets/cloudy-partial2-night_after.jpg");
 }
 
 .bg-cloudy {
-  background-image: url("./assets/cloudy.jpg");
+  background-image: url("./assets/cloudy_after.jpg");
+  transition: background-color 0.5s ease;
+
 }
 
 .bg-cloudy-night {
-  background-image: url("./assets/cloudy-night.jpg");
+  background-image: url("./assets/cloudy-night_after.jpg");
 }
 
 .bg-drizzle {
-  background-image: url("./assets/drizzle.jpg");
+  background-image: url("./assets/drizzle_after.jpg");
 }
 
 .bg-drizzle-night {
-  background-image: url("./assets/drizzle-night.jpg");
+  background-image: url("./assets/drizzle-night_after.jpg");
 }
 
 .bg-rainy {
-  background-image: url("./assets/rainy.jpg");
+  background-image: url("./assets/rainy_after.jpg");
+  transition: background-color 0.5s ease;
+
 }
 
 .bg-rainy-night {
-  background-image: url("./assets/rainy-night.jpg");
+  background-image: url("./assets/rainy-night_after.jpg");
 }
 
 .bg-thunderstorm {
-  background-image: url("./assets/thunderstorm.jpg");
+  background-image: url("./assets/thunderstorm_after.jpg");
 }
 
 .bg-thunderstorm-night {
-  background-image: url("./assets/thunderstorm-night.jpg");
+  background-image: url("./assets/thunderstorm-night_after.jpg");
 }
 
 .bg-snowy {
-  background-image: url("./assets/snowy.jpg");
+  background-image: url("./assets/snowy_after.jpg");
 }
 
 .bg-snowy-night {
-  background-image: url("./assets/snowy-night.jpg");
+  background-image: url("./assets/snowy-night_after.jpg");
 }
 
 .bg-foggy {
-  background-image: url("./assets/foggy.jpg");
+  background-image: url("./assets/foggy_after.jpg");
 }
 
 .bg-foggy-night {
-  background-image: url("./assets/foggy-night.jpg");
+  background-image: url("./assets/foggy-night_after.jpg");
 }
