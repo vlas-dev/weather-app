@@ -364,7 +364,7 @@ const Weather = () => {
                   type="text"
                   name="search"
                   placeholder="Enter a city"
-                  className={`px-6 py-2 text-lg rounded-l-full border  border-white border-r-0 bg-transparent focus:outline-none w-52 md:w-80 backdrop-blur-sm ${
+                  className={`px-6 py-2 text-lg rounded-l-full border   border-r-0 bg-transparent focus:outline-none w-52 md:w-80 backdrop-blur-sm ${
                     weatherCondition.includes("d") ? "border-[#3c3c3c] placeholder:text-[#7b7b7b] " : "border-white"
                   }`}
                   value={searchText}
