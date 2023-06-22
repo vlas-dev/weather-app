@@ -60,8 +60,6 @@
 
 .bg-cloudy {
   background-image: url("./assets/cloudy_after.jpg");
-  transition: background-color 0.5s ease;
-
 }
 
 .bg-cloudy-night {
@@ -78,8 +76,6 @@
 
 .bg-rainy {
   background-image: url("./assets/rainy_after.jpg");
-  transition: background-color 0.5s ease;
-
 }
 
 .bg-rainy-night {
