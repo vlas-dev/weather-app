@@ -60,8 +60,6 @@ const Weather = () => {
     }
   };
 
-
-
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
@@ -116,13 +114,19 @@ const Weather = () => {
         document.body.classList.add("bg-cloudy-partial", "transition-effect");
         break;
       case "02n":
-        document.body.classList.add("bg-cloudy-partial-night", "transition-effect");
+        document.body.classList.add(
+          "bg-cloudy-partial-night",
+          "transition-effect"
+        );
         break;
       case "03d":
         document.body.classList.add("bg-cloudy-partial2", "transition-effect");
         break;
       case "03n":
-        document.body.classList.add("bg-cloudy-partial2-night", "transition-effect");
+        document.body.classList.add(
+          "bg-cloudy-partial2-night",
+          "transition-effect"
+        );
         break;
       case "04d":
         document.body.classList.add("bg-cloudy", "transition-effect");
@@ -146,7 +150,10 @@ const Weather = () => {
         document.body.classList.add("bg-thunderstorm", "transition-effect");
         break;
       case "11n":
-        document.body.classList.add("bg-thunderstorm-night", "transition-effect");
+        document.body.classList.add(
+          "bg-thunderstorm-night",
+          "transition-effect"
+        );
         break;
       case "13d":
         document.body.classList.add("bg-snowy", "transition-effect");
@@ -299,7 +306,12 @@ const Weather = () => {
 
   return (
     <div className="flex items-center justify-center w-screen h-screen">
-      <div className="w-[330px] md:w-[700px] h-[500px] bg-white bg-opacity-10 rounded-xl shadow-lg text-white backdrop-filter backdrop-blur-sm border border-white border-opacity-20">
+      <div
+        className={`w-[330px] md:w-[700px] h-[500px] bg-white  bg-opacity-10 rounded-xl shadow-lg  backdrop-filter backdrop-blur-sm border border-white border-opacity-20 ${
+          weatherCondition.includes("d") ? "text-[#3c3c3c] " : "text-white"
+        }`}
+      >
+        {" "}
         <div className="flex flex-col items-center text-center pt-5 ">
           <div className="text-sm md:text-md md:mb-8 md:mt-2 flex gap-4 md:gap-8">
             <button
@@ -352,7 +364,9 @@ const Weather = () => {
                   type="text"
                   name="search"
                   placeholder="Enter a city"
-                  className="px-6 py-2 text-lg rounded-l-full border placeholder:text-[#e7e7e7] border-white border-r-0 bg-transparent focus:outline-none w-52 md:w-80 backdrop-blur-sm"
+                  className={`px-6 py-2 text-lg rounded-l-full border  border-white border-r-0 bg-transparent focus:outline-none w-52 md:w-80 backdrop-blur-sm ${
+                    weatherCondition.includes("d") ? "border-[#3c3c3c] placeholder:text-[#7b7b7b] " : "border-white"
+                  }`}
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
                   autoComplete="off"
@@ -369,7 +383,9 @@ const Weather = () => {
                 )}
                 <button
                   type="submit"
-                  className="px-6 py-3 h-full bg-transparent border border-white rounded-r-full backdrop-blur-sm"
+                  className={`px-6 py-3 h-full bg-transparent border  rounded-r-full backdrop-blur-sm ${
+                    weatherCondition.includes("d") ? "border-[#3c3c3c] " : "border-white"
+                  }`}
                 >
                   <GoSearch className="w-5 h-5" />
                 </button>
@@ -423,7 +439,7 @@ const Weather = () => {
                     <button
                       onClick={handleUnitChangeMetric}
                       className={` ${
-                        unit === "metric" ? "" : "text-[#606060]"
+                        unit === "metric" ? "" : "text-[#a3a3a3]"
                       }`}
                     >
                       °C
@@ -435,7 +451,7 @@ const Weather = () => {
                     <button
                       onClick={handleUnitChangeImperial}
                       className={` ${
-                        unit === "imperial" ? "" : "text-[#606060]"
+                        unit === "imperial" ? "" : "text-[#a3a3a3]"
                       }`}
                     >
                       °F
