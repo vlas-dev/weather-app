@@ -31,6 +31,7 @@ const Weather = () => {
   const [userLocation, setUserLocation] = useState(null);
   const [searchKey, setSearchKey] = useState(0);
   const [searchText, setSearchText] = useState("");
+  const [weatherCondition, setWeatherCondition] = useState("");
 
   const fetchUserLocation = async () => {
     try {
@@ -59,6 +60,8 @@ const Weather = () => {
     }
   };
 
+
+
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
@@ -80,10 +83,12 @@ const Weather = () => {
         if (metricResponse.ok && imperialResponse.ok) {
           setWeatherData({ metric: metricData, imperial: imperialData });
 
-         
+          // Set the weather condition based on the retrieved data
+          setWeatherCondition(metricData.weather[0].icon);
         } else {
           setWeatherData(null);
 
+          setWeatherCondition("");
         }
       } catch (error) {
         console.error("Error:", error);
@@ -98,8 +103,91 @@ const Weather = () => {
     }
   }, [searchQuery, searchKey]);
 
- 
+  useEffect(() => {
+    // Update the body class based on the weather condition
+    switch (weatherCondition) {
+      case "01d":
+        document.body.classList.add("bg-clear");
+        break;
+      case "01n":
+        document.body.classList.add("bg-clear-night");
+        break;
+      case "02d":
+        document.body.classList.add("bg-cloudy-partial");
+        break;
+      case "02n":
+        document.body.classList.add("bg-cloudy-partial-night");
+        break;
+      case "03d":
+        document.body.classList.add("bg-cloudy-partial2");
+        break;
+      case "03n":
+        document.body.classList.add("bg-cloudy-partial2-night");
+        break;
+      case "04d":
+        document.body.classList.add("bg-cloudy");
+        break;
+      case "04n":
+        document.body.classList.add("bg-cloudy-night");
+        break;
+      case "09d":
+        document.body.classList.add("bg-drizzle");
+        break;
+      case "09n":
+        document.body.classList.add("bg-drizzle-night");
+        break;
+      case "10d":
+        document.body.classList.add("bg-rainy");
+        break;
+      case "10n":
+        document.body.classList.add("bg-rainy-night");
+        break;
+      case "11d":
+        document.body.classList.add("bg-thunderstorm");
+        break;
+      case "11n":
+        document.body.classList.add("bg-thunderstorm-night");
+        break;
+      case "13d":
+        document.body.classList.add("bg-snowy");
+        break;
+      case "13n":
+        document.body.classList.add("bg-snowy-night");
+        break;
+      case "50d":
+        document.body.classList.add("bg-foggy");
+        break;
+      case "50n":
+        document.body.classList.add("bg-foggy-night");
+        break;
+      default:
+        break;
+    }
 
+    return () => {
+      // Cleanup the body class when component unmounts
+      document.body.classList.remove(
+        "bg-clear",
+        "bg-clear-night",
+        "bg-cloudy-partial",
+        "bg-cloudy-partial-night",
+        "bg-cloudy-partial2",
+        "bg-cloudy-partial2-night",
+        "bg-cloudy",
+        "bg-cloudy-night",
+        "bg-drizzle",
+        "bg-drizzle-night",
+        "bg-rainy",
+        "bg-rainy-night",
+        "bg-thunderstorm",
+        "bg-thunderstorm-night",
+        "bg-snowy",
+        "bg-snowy-night",
+        "bg-foggy",
+        "bg-foggy-night"
+      );
+    };
+  }, [weatherCondition]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -211,8 +299,7 @@ const Weather = () => {
 
   return (
     <div className="flex items-center justify-center w-screen h-screen">
-<div className="w-[330px] md:w-[700px] h-[500px] bg-white bg-opacity-10 rounded-xl shadow-lg text-white backdrop-filter backdrop-blur-sm border border-white border-opacity-20">
-       
+      <div className="w-[330px] md:w-[700px] h-[500px] bg-white bg-opacity-10 rounded-xl shadow-lg text-white backdrop-filter backdrop-blur-sm border border-white border-opacity-20">
         <div className="flex flex-col items-center text-center pt-5 ">
           <div className="text-sm md:text-md md:mb-8 md:mt-2 flex gap-4 md:gap-8">
             <button

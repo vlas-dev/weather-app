@@ -32,3 +32,76 @@
     justify-content: center;
   }
 }
+
+
+.bg-clear {
+  background-image: url("./assets/clear.jpg");
+}
+
+.bg-clear-night {
+  background-image: url("./assets/clear-night.jpg");
+}
+
+.bg-cloudy-partial {
+  background-image: url("./assets/cloudy-partial.jpg");
+}
+
+.bg-cloudy-partial-night {
+  background-image: url("./assets/cloudy-partial-night.jpg");
+}
+
+.bg-cloudy-partial2 {
+  background-image: url("./assets/cloudy-partial2.jpg");
+}
+
+.bg-cloudy-partial2-night {
+  background-image: url("./assets/cloudy-partial2-night.jpg");
+}
+
+.bg-cloudy {
+  background-image: url("./assets/cloudy.jpg");
+}
+
+.bg-cloudy-night {
+  background-image: url("./assets/cloudy-night.jpg");
+}
+
+.bg-drizzle {
+  background-image: url("./assets/drizzle.jpg");
+}
+
+.bg-drizzle-night {
+  background-image: url("./assets/drizzle-night.jpg");
+}
+
+.bg-rainy {
+  background-image: url("./assets/rainy.jpg");
+}
+
+.bg-rainy-night {
+  background-image: url("./assets/rainy-night.jpg");
+}
+
+.bg-thunderstorm {
+  background-image: url("./assets/thunderstorm.jpg");
+}
+
+.bg-thunderstorm-night {
+  background-image: url("./assets/thunderstorm-night.jpg");
+}
+
+.bg-snowy {
+  background-image: url("./assets/snowy.jpg");
+}
+
+.bg-snowy-night {
+  background-image: url("./assets/snowy-night.jpg");
+}
+
+.bg-foggy {
+  background-image: url("./assets/foggy.jpg");
+}
+
+.bg-foggy-night {
+  background-image: url("./assets/foggy-night.jpg");
+}
